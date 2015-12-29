@@ -5,13 +5,33 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 
-	<!-- spring:logback -->
+	<!-- context-param -->
 	<context-param>
 		<param-name>logbackConfigLocation</param-name>
 		<param-value>classpath:logback/logback.xml</param-value>
 	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/WebApplicationContext.xml</param-value>
+	</context-param>
+	
+	<!-- listener -->
 	<listener>
 		<listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
 	</listener>
-
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- servlet -->
+	<servlet>
+		<servlet-name>springMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMVC</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
