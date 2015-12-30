@@ -69,7 +69,7 @@
 			<artifactId>logback-ext-spring</artifactId>
 			<version>0.1.2</version>
 		</dependency>
-
+		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -81,7 +81,7 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.3</version>
 		</dependency>
-
+		<!-- sql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -95,9 +95,31 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- shiro -->
+		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-all</artifactId>
 			<version>1.2.0</version>
+		</dependency>
+		<!-- cache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-support</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-ehcache</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 	</dependencies>
