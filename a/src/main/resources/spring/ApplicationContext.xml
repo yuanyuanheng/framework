@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
-	<mvc:annotation-driven />
-
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        				classpath:/org/springframework/beans/factory/xml/spring-beans-4.2.xsd
+">
+        
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -58,4 +54,30 @@
 		<!-- mapper扫描 -->
 		<property name="mapperLocations" value="classpath:mybatis/*/*.xml"></property>
 	</bean>
+
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+
+		<property name="loginUrl" value="/" />
+
+		<property name="successUrl" value="/main/index" />
+
+		<property name="unauthorizedUrl" value="/login_toLogin" />
+
+		<property name="filterChainDefinitions">
+			<value>
+				/static/login/** = anon
+				/static/js/myjs/** = authc
+				/static/js/** = anon
+				/uploadFiles/uploadImgs/** = anon
+				/code.do = anon
+				/login_login = anon
+				/app**/** = anon
+				/weixin/** = anon
+				/** = authc
+			</value>
+		</property>
+	</bean>
+	<!-- ================ Shiro end ================ -->
 </beans>
