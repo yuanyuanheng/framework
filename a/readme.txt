@@ -37,3 +37,6 @@
 
 bean注解
 @Resource 注解被用来激活一个命名资源（named resource）的依赖注入
+
+classpath:/org/springframework/beans/factory/xml/spring-beans-4.2.xsd
+classpath:/org/springframework/web/servlet/config/spring-mvc-4.2.xsd

@@ -6,7 +6,7 @@ import com.module.service.common.impl.BaseServiceImpl;
 import com.module.service.yh.YhbService;
 
 
-@Service("yhbImpl")
+@Service("yhbService")
 public class YhbServiceImpl extends BaseServiceImpl implements YhbService {
     
 	/***

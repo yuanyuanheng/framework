@@ -7,12 +7,11 @@ import org.slf4j.LoggerFactory;
 
 import com.module.dao.Dao;
 import com.module.service.common.BaseService;
-import com.sd.ubarchive.util.UuidUtil;
 
-public class BaseServiceImpl implements BaseService{
-    
-	public Logger logger=LoggerFactory.getLogger(BaseServiceImpl.class);
-    
+public class BaseServiceImpl implements BaseService {
+
+	public Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
+	
 	@Resource
 	protected Dao dao;
 
@@ -50,8 +49,5 @@ public class BaseServiceImpl implements BaseService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public static String get32UUID(){
-		return UuidUtil.get32UUID();
-	}
+
 }

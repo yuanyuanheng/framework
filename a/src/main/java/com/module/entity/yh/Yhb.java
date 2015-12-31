@@ -6,17 +6,32 @@ public class Yhb {
 	private String yhm;
 	private String mm;
 	private String zhlx;
-	private String jhzt;
 	private String scdlsj;
 	private String ipdz;
 	private String xmxxqrzt;
 
+	public Yhb() {
+	}
+
+	public Yhb(String sId,String sYhid,String sYhm,String sMm,String sZhlx,
+			String sScdlsj,String sIpdz,String sXmxxqrzt) {
+		id = sId;
+		yhid = sYhid;
+		yhm = sYhm;
+		mm = sMm;
+		zhlx = sZhlx;
+		scdlsj = sScdlsj;
+		ipdz = sIpdz;
+		xmxxqrzt = sXmxxqrzt;
+		
+	}
+
 	@Override
 	public String toString() {
-		return "Yhb ["+"yhid=" + id + "yhid=" + yhid + ", yhm=" + yhm + ", mm=" + mm + ", zhlx=" + zhlx
-				+ ", scdlsj=" + scdlsj + ", ipdz=" + ipdz + ", xmxxqrzt=" + xmxxqrzt + "]";
+		return "Yhb [" + "yhid=" + id + "yhid=" + yhid + ", yhm=" + yhm + ", mm=" + mm + ", zhlx=" + zhlx + ", scdlsj="
+				+ scdlsj + ", ipdz=" + ipdz + ", xmxxqrzt=" + xmxxqrzt + "]";
 	}
-	
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -35,10 +50,6 @@ public class Yhb {
 
 	public void setZhlx(String zhlx) {
 		this.zhlx = zhlx;
-	}
-
-	public void setJhzt(String jhzt) {
-		this.jhzt = jhzt;
 	}
 
 	public void setScdlsj(String scdlsj) {
@@ -71,10 +82,6 @@ public class Yhb {
 
 	public String getZhlx() {
 		return zhlx;
-	}
-
-	public String getJhzt() {
-		return jhzt;
 	}
 
 	public String getScdlsj() {
