@@ -6,9 +6,6 @@
 						http://www.springframework.org/schema/context 
 						http://www.springframework.org/schema/context/spring-context-4.2.xsd
 ">
-	<!-- 启用注解 -->
-	<context:annotation-config />
-	<context:component-scan base-package="com.module"></context:component-scan>
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
