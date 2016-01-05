@@ -9,13 +9,13 @@ import com.module.control.common.BaseCtrl;
 @RequestMapping(value="/")
 public class Test extends BaseCtrl{
 	  
-	@RequestMapping("j")
+	@RequestMapping("gofirst")
 	  public String index() {
 		logger.info("test index");
-	    return "index";
+	    return "gofirst";
 	  }
-	@RequestMapping("h")
-	  public String in() {
+	@RequestMapping("flowchart")
+	  public String flowchart() {
 		logger.info("test index");
 	    return "flowchart";
 	  }

@@ -5,14 +5,11 @@
 <meta name="description" content="Interactive flowchart diagram implemented by GoJS in JavaScript for HTML." />
 <!-- Copyright 1998-2015 by Northwoods Software Corporation. -->
 <meta charset="UTF-8">
-<script src="go.js"></script>
-<link href="../assets/css/goSamples.css" rel="stylesheet" type="text/css" />  <!-- you don't need to use this -->
-<script src="goSamples.js"></script>  <!-- this is only for the GoJS Samples framework -->
+<script src="/a/static/js/go.js"></script>
+
 <script id="code">
   function init() {
-    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make;  // for conciseness in defining templates
-
     myDiagram =
       $(go.Diagram, "myDiagram",  // must name or refer to the DIV HTML element
         {
@@ -214,7 +211,7 @@
           model: new go.GraphLinksModel([  // specify the contents of the Palette
             { category: "Start", text: "Start" },
             { text: "Step" },
-            { text: "???", figure: "Diamond" },
+            { text: "Diamond", figure: "Diamond" },
             { category: "End", text: "End" },
             { category: "Comment", text: "Comment" }
           ])
@@ -241,51 +238,21 @@
     myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
   }
 
-  // add an SVG rendering of the diagram at the end of this page
-  function makeSVG() {
-    var svg = myDiagram.makeSvg({
-        scale: 0.5
-      });
-    svg.style.border = "1px solid black";
-    obj = document.getElementById("SVGArea");
-    obj.appendChild(svg);
-    if (obj.children.length > 0) {
-      obj.replaceChild(svg, obj.children[0]);
-    }
-  }
 </script>
 </head>
 <body onload="init()">
 <div id="sample">
   <div style="width:100%; white-space:nowrap;">
-    <span style="display: inline-block; vertical-align: top; padding: 5px; width:100px">
+    <div style="display: inline-block; vertical-align: top; padding: 5px; width:100px">
       <div id="myPalette" style="border: solid 1px gray; height: 720px"></div>
-    </span>
+    </div>
 
-    <span style="display: inline-block; vertical-align: top; padding: 5px; width:80%">
+    <div style="display: inline-block; vertical-align: top; padding: 5px; width:80%">
       <div id="myDiagram" style="border: solid 1px gray; height: 720px"></div>
-    </span>
+    </div>
   </div>
-  <p>
-  The FlowChart sample demonstrates several key features of GoJS,
-  namely <a href="../intro/palette.html">Palette</a>s,
-  <a href="../intro/links.html">Linkable nodes</a>, Drag/Drop behavior,
-  <a href="../intro/textBlocks.html">Text Editing</a>, and the use of
-  <a href="../intro/templateMaps.html">Node Template Maps</a> in Diagrams.
-  </p>
-  <p>
-  Mouse-over a Node to view its ports.
-  Drag from these ports to create new Links.
-  Selecting Links allows you to re-shape and re-link them.
-  Selecting a Node and then clicking its TextBlock will allow
-  you to edit text (except on the Start and End Nodes).
-  </p>
-  <p>
-  The Diagram Model data is loaded from the JSON below.
-  </p>
-  <button id="SaveButton" onclick="save()">Save</button>
-  <button onclick="load()">Load</button>
-  <textarea id="mySavedModel" style="width:100%;height:300px">
+  
+  <textarea id="mySavedModel" style="width:100%;height:300px;display:none">
 { "class": "go.GraphLinksModel",
   "linkFromPortIdProperty": "fromPort",
   "linkToPortIdProperty": "toPort",
@@ -318,11 +285,6 @@
 {"from":0, "to":4, "fromPort":"B", "toPort":"T"}
  ]}
   </textarea>
-  <p>Click the button below to render the current GoJS Diagram into SVG at one-half scale.
-     The SVG is not interactive like the GoJS diagram, but can be used for printing or display.
-     For more information, see the page on <a href="../intro/makingSVG.html">making SVG</a>.</p>
-  <button onclick="makeSVG()">Render as SVG</button>
-  <div id="SVGArea"></div>
 </div>
 </body>
 </html>
