@@ -1,0 +1,4 @@
+股票实时查询数据接口
+http://hq.sinajs.cn/list=sh600000,sh600004
+查询大盘指数，比如查询上证综合指数（000001）：
+http://hq.sinajs.cn/list=s_sh000001
