@@ -40,3 +40,27 @@ bean注解
 
 classpath:/org/springframework/beans/factory/xml/spring-beans-4.2.xsd
 classpath:/org/springframework/web/servlet/config/spring-mvc-4.2.xsd
+
+Mysql 免安装版使用步骤
+1、解压
+2、my-default.ini copy成 my.ini文件
+3、配置
+basedir =C:\mysql-5.6.19-winx64
+datadir =C:\mysql-5.6.19-winx64\data
+port = 3306
+skip-grant-tables //免密码登录
+[client]
+port= 3306
+设置环境变量MYSQL_HOME\bin
+4、注册服务
+E:\软件\mysql-5.7.10-winx64\bin>mysqld -install
+5、移除服务
+mysqld remove
+6、初始化
+mysqld  --initialize-insecure 
+7、启动服务
+net start mysql
+8、修改密码
+mysql -u root --skip-password
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+flush privileges;
