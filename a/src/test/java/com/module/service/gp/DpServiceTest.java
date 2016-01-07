@@ -1,28 +1,28 @@
-package com.module.service.yh;
+package com.module.service.gp;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 
 import com.module.common.BaseTest;
-import com.module.entity.yh.Yhb;
+import com.module.entity.gp.Dp;
 import com.module.util.UuidUtil;
 
 
-public class YhbServiceTest extends BaseTest{
+public class DpServiceTest extends BaseTest{
 	 
 	 
-	@Resource(name="yhbService")
-	YhbService yhbService;
+	@Resource(name="dpService")
+	DpService dpService;
 	
 	@Test
 	public void saveTest() {
 	
-		Yhb yh = new Yhb(UuidUtil.get32UUID(),"a","b","c","d","e","f","g");
-		
+		Dp dp = new Dp();
+		dp.setDpid(UuidUtil.get32UUID());
 		try {
 			log.info("测试");
-			yhbService.save(yh);
+			dpService.save(dp);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

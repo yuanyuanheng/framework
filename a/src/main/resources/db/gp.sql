@@ -6,14 +6,14 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS gp_dp;
 CREATE TABLE gp_dp (
-	id varchar(32) NOT NULL,
+	dpid varchar(32) NOT NULL,
 	zsmc	varchar(10)	DEFAULT NULL COMMENT '指数名称',
 	dqzs	float	DEFAULT NULL COMMENT '当前指数',
 	jrbhz	float	DEFAULT NULL COMMENT '今日变化值',
 	jrbhbfb	float	DEFAULT NULL COMMENT '今日变化百分比',
 	cjl	float	DEFAULT NULL COMMENT '成交量（手）',
 	cje	float	DEFAULT NULL COMMENT '成交额（万元）',
-  PRIMARY KEY (id)
+  PRIMARY KEY (dpid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -21,7 +21,7 @@ CREATE TABLE gp_dp (
 -- ----------------------------
 DROP TABLE IF EXISTS gp_gp;
 CREATE TABLE gp_gp (
-	id varchar(32) NOT NULL,
+	gpid varchar(32) NOT NULL,
 	gpmc	varchar(50) 	DEFAULT NULL COMMENT '股票名字',
 	jrkpj	float	DEFAULT NULL COMMENT '今日开盘价',
 	zrspj	float	DEFAULT NULL COMMENT '昨日收盘价',
@@ -55,5 +55,5 @@ CREATE TABLE gp_gp (
 	rq	varchar(10) 	DEFAULT NULL COMMENT '	日期',
 	sj	varchar(8) 	DEFAULT NULL COMMENT '	时间',
 
-  PRIMARY KEY (id)
+  PRIMARY KEY (gpid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

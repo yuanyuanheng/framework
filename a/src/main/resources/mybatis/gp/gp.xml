@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gp">
+	<!-- 新增 -->
+	<insert id="save" parameterType="Gp">
+		insert into gp_gp(
+		gpid ,
+		gpmc,
+		jrkpj,
+		zrspj,
+		dqjg,
+		jrzgj,
+		jrzdj,
+		jmj ,
+		jmmj,
+		cjgps,
+		cjje,
+		m1sq,
+		m1bj,
+		m2sq,
+		m2bj,
+		m3sq,
+		m3bj,
+		m4sq,
+		m4bj,
+		m5sq,
+		m5bj,
+		mm1sq,
+		mm1bj,
+		mm2sq,
+		mm2bj,
+		mm3sq,
+		mm3bj,
+		mm4sq,
+		mm4bj,
+		mm5sq,
+		mm5bj,
+		rq ,
+		sj
+		)
+		values(
+		#{gpid },
+		#{gpmc},
+		#{jrkpj},
+		#{zrspj},
+		#{dqjg},
+		#{jrzgj},
+		#{jrzdj},
+		#{jmj},
+		#{jmmj},
+		#{cjgps},
+		#{cjje},
+		#{m1sq},
+		#{m1bj},
+		#{m2sq},
+		#{m2bj},
+		#{m3sq},
+		#{m3bj},
+		#{m4sq},
+		#{m4bj},
+		#{m5sq},
+		#{m5bj},
+		#{mm1sq},
+		#{mm1bj},
+		#{mm2sq},
+		#{mm2bj},
+		#{mm3sq},
+		#{mm3bj},
+		#{mm4sq},
+		#{mm4bj},
+		#{mm5sq},
+		#{mm5bj},
+		#{rq},
+		#{sj}
+		)
+	</insert>
+</mapper>

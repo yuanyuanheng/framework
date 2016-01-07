@@ -7,7 +7,8 @@
 		<setting name="cacheEnabled" value="true" />
 	</settings>
 	<typeAliases>
-		<typeAlias type="com.module.entity.yh.Yhb" alias="yhb" />
+		<typeAlias type="com.module.entity.gp.Dp" alias="Dp" />
+		<typeAlias type="com.module.entity.gp.Gp" alias="Gp" />
 	</typeAliases>
 </configuration>
 	

@@ -1,9 +1,9 @@
-package com.module.service.yh;
+package com.module.service.gp;
 
-public interface YhbService {
+public interface DpService {
 
 	/***
-	 * 保存用户信息
+	 * 保存大盘信息
 	 * 
 	 * @param obj
 	 * @throws Exception
