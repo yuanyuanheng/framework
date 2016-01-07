@@ -1,8 +1,12 @@
 package com.module.entity.gp;
 
+import java.lang.reflect.Field;
+
+import com.module.util.UuidUtil;
+
 public class Gp {
 	private String gpid;
-	private float gpmc;
+	private String gpmc;
 	private float jrkpj;
 	private float zrspj;
 	private float dqjg;
@@ -35,6 +39,26 @@ public class Gp {
 	private String rq;
 	private String sj;
 
+	public void setGp(String[] strArray){
+		Class<? extends Gp> cls = this.getClass();
+		Field[] field = cls.getDeclaredFields();
+		if(strArray.length > field.length) return;
+		this.gpid = UuidUtil.get32UUID();	
+		for(int i=1;i<strArray.length;i++){//最后一位未知
+			try {
+				if(field[i].getType().toString().endsWith("String")){
+					field[i].set(this, strArray[i-1]);
+				}else{
+					field[i].set(this, Float.parseFloat(strArray[i-1]));
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	public String getGpid() {
 		return gpid;
 	}
@@ -43,11 +67,11 @@ public class Gp {
 		this.gpid = gpid;
 	}
 
-	public float getGpmc() {
+	public String getGpmc() {
 		return gpmc;
 	}
 
-	public void setGpmc(float gpmc) {
+	public void setGpmc(String gpmc) {
 		this.gpmc = gpmc;
 	}
 

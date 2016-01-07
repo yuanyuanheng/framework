@@ -5,6 +5,7 @@
 5.阿里 druid数据库连接池
 6.数据库使用mysql
 7.缓存框架ehcache
+7.数据抓取httpclient
 
 注释格式
 1、单行(single-line)注释：“//……”
