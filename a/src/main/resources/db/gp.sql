@@ -1,6 +1,15 @@
 
 SET FOREIGN_KEY_CHECKS=0;
-
+-- ----------------------------
+-- Table structure for gp_gpdm
+-- ----------------------------
+DROP TABLE IF EXISTS gp_gpdm;
+CREATE TABLE gp_gpdm (
+	gpdm	Integer	NOT NULL COMMENT '股票代码',
+	gpmc	varchar(50) 	DEFAULT NULL COMMENT '股票名字',
+	zt	Integer	DEFAULT NULL COMMENT '状态0无效1大盘2股票',
+  PRIMARY KEY (gpdm)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Table structure for gp_dp
 -- ----------------------------

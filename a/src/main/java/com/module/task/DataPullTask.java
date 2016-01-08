@@ -1,41 +1,34 @@
 package com.module.task;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.module.entity.gp.Gp;
 import com.module.service.gp.GpService;
-import com.module.util.DataOperate;
+import com.module.util.DataOpt;
+import com.module.util.SinaDataOpt;
 
 @Component
 public class DataPullTask {
 	public Logger log = LoggerFactory.getLogger(DataPullTask.class);
 	@Resource(name="gpService")
 	GpService gpService;
-	Gp gp = new Gp();
+	
 	@Scheduled(fixedRate = 5000)
-	public void getData(){
-		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet httpGet = new HttpGet("http://hq.sinajs.cn/list=sh600389");
-		CloseableHttpResponse httpResponse;
+	public void getGPData(){
 		try {
-			httpResponse = httpClient.execute(httpGet);
-			HttpEntity entity = httpResponse.getEntity();
-			String sContext = EntityUtils.toString(entity);
-			String[] strArray = DataOperate.getStrArray(sContext);
-			gp.setGp(strArray);
-			gpService.save(gp);
+			String sList = "sh600000,sh600004";
+			Map<Integer,String[]> mapData = SinaDataOpt.getSinaData(sList);
+			for(int i=0;i<mapData.size();i++){
+				Map<String,String> mapGp = DataOpt.buildMap(DataOpt.GP_FIELDNAME,mapData.get(i));
+				gpService.save(mapGp);
+			}
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,6 +36,11 @@ public class DataPullTask {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
+	}
+	
+	@Scheduled(fixedRate = 5000)
+	public void flushGpdm(){
 		
 	}
 	
