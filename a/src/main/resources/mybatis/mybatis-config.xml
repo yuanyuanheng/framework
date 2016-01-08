@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias type="com.module.entity.gp.Dp" alias="Dp" />
 		<typeAlias type="com.module.entity.gp.Gp" alias="Gp" />
+		<typeAlias type="com.module.entity.gp.Gpdm" alias="Gpdm" />
 	</typeAliases>
 </configuration>
 	

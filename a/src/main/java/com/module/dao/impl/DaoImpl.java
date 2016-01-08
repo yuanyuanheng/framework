@@ -120,7 +120,7 @@ public class DaoImpl implements Dao {
 		return sqlSessionTemplate.selectList(str, obj);
 	}
 	
-	public Object findForMap(String str, Object obj, String key, String value) throws Exception {
+	public Object findForMap(String str, Object obj, String key) throws Exception {
 		return sqlSessionTemplate.selectMap(str, obj, key);
 	}
 	

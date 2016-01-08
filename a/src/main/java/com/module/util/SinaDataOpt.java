@@ -32,7 +32,7 @@ public class SinaDataOpt{
 			HttpEntity entity = httpResponse.getEntity();
 			sBufferData.append(EntityUtils.toString(entity));
 			sBufferData.deleteCharAt(sBufferData.length()-1);
-			log.info(sBufferData.toString());
+			log.debug(sBufferData.toString());
 			String[] arrFirst = DataOpt.splitData(sBufferData.toString(), ";");
 			for(String sValue:arrFirst){
 				if(sValue.trim().equals("")) continue;

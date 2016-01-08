@@ -5,10 +5,13 @@
 	<insert id="save" parameterType="Map">
 		insert into gp_gp(gpdm,gpmc,zt) values(#{gpdm},#{gpmc},#{zt})
 	</insert>
-	<select id="select" parameterType="int" resultType="Map">
+	<select id="selectObj" parameterType="int" resultType="Gpdm">
 		select * from gp_gpdm where gpdm = #{gpdm}
 	</select>
-	<update id="update" parameterType="Map">
+	<select id="selectList" parameterType="Gpdm" resultType="List">
+		select * from gp_gpdm 
+	</select>
+	<update id="update" parameterType="Gpdm">
 		update gp_gpdm set gpdm = #{gpdm},gpmc = #{gpmc},zt = #{zt} where gpdm = #{gpdm}
 	</update>
 </mapper>
