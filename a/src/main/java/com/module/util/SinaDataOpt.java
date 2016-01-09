@@ -15,36 +15,49 @@ import org.slf4j.LoggerFactory;
 
 public class SinaDataOpt{
 	public static Logger log = LoggerFactory.getLogger(SinaDataOpt.class);
-	private static CloseableHttpClient httpClient = HttpClients.createDefault();
-	private static HttpGet httpGet = new HttpGet();
-	private static StringBuffer sBufferData = new StringBuffer();
-	private static Map<Integer,String[]> mapData = new HashMap<Integer,String[]>();
-	private static StringBuffer sBufferURI = new StringBuffer();
+	private  HttpGet httpGet = new HttpGet();
+	private  StringBuffer sBufferData = new StringBuffer();
+	private  StringBuffer sBufferURI = new StringBuffer();
+	private  Map<String,String[]> mapData = new HashMap<String,String[]>();
 	
-	public static Map<Integer,String[]> getSinaData(String sSinaGpdm){
+	public  Map<String,String[]> getSinaData(String sSinaGpdm){
 		sBufferData.setLength(0);
 		sBufferURI.setLength(0);
 		mapData.clear();
 		try {
+			CloseableHttpClient httpClient = HttpClients.createDefault();
 			httpGet.setURI(URI.create("http://hq.sinajs.cn/list="+sSinaGpdm));
-			log.debug(httpGet.getURI().toString());
 			CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
 			HttpEntity entity = httpResponse.getEntity();
 			sBufferData.append(EntityUtils.toString(entity));
 			sBufferData.deleteCharAt(sBufferData.length()-1);
-			log.debug(sBufferData.toString());
 			String[] arrFirst = DataOpt.splitData(sBufferData.toString(), ";");
 			for(String sValue:arrFirst){
-				if(sValue.trim().equals("")) continue;
-				sValue = DataOpt.subData(sValue);
-				sValue = UuidUtil.get32UUID() + "," + sValue;
-				String[] arrSecond = DataOpt.splitData(sValue, ",");
-				mapData.put(mapData.size(), arrSecond);
+				if(sValue.trim().length()<40) continue;
+				String[] arrSecond = DataOpt.splitData(DataOpt.subData(sValue,"\"","\""), ",");
+				mapData.put(DataOpt.subData(sValue,"_sh","="), arrSecond);
 			}
+			arrFirst = null;
+			sBufferURI.setLength(0);
+			sBufferData.setLength(0);
+			httpGet.releaseConnection();
+			httpClient.close();
+			httpResponse.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mapData;
+	}
+	
+	public void destroyData(){
+		sBufferURI.setLength(0);
+		sBufferData.setLength(0);
+		sBufferURI = null;
+		sBufferData = null;
+		httpGet.releaseConnection();
+		httpGet = null;
+		mapData.clear();
+		mapData = null;
 	}
 }

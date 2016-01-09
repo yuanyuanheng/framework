@@ -18,8 +18,8 @@ public class DataOpt {
 	public static List<Gpdm> GPDM_DP= new ArrayList<Gpdm>();
 	public static List<Gpdm> GPDM_GP= new ArrayList<Gpdm>();
 	
-	public static String subData(String strData) {
-		return strData.substring(strData.indexOf('"')+1, strData.lastIndexOf('"'));
+	public static String subData(String sData,String sBegin,String sEnd) {
+		return sData.substring(sData.indexOf(sBegin)+sBegin.length(), sData.lastIndexOf(sEnd));
 	}
 
 	public static String[] splitData(String str,String sFlag) {

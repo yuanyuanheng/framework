@@ -1,5 +1,7 @@
 package com.module.dao;
 
+import java.util.List;
+
 public interface Dao {
 	
 	/**
@@ -10,6 +12,8 @@ public interface Dao {
 	 * @throws Exception
 	 */
 	public Object save(String str, Object obj) throws Exception;
+	
+	public Object batchSave(String str, List<Object> objs )throws Exception;
 	
 	/**
 	 * 修改对象

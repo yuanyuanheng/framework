@@ -12,9 +12,9 @@ import com.module.service.gp.GpdmService;
 @Service("gpdmService")
 public class GpdmServiceImpl extends BaseServiceImpl implements GpdmService {
     
-	public void save(Object obj) throws Exception {
+	public void save(Gpdm gpdm) throws Exception {
 		logger.info("gpdmImpl save");
-		dao.save("gpdm.save", obj);
+		dao.save("gpdm.save", gpdm);
 	}
 	
 	@SuppressWarnings("unchecked")

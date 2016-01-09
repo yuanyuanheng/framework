@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gpdm">
-	<insert id="save" parameterType="Map">
-		insert into gp_gp(gpdm,gpmc,zt) values(#{gpdm},#{gpmc},#{zt})
+	<insert id="save" parameterType="Gpdm">
+		replace into gp_gpdm(gpdm,gpmc,zt) values(#{gpdm},#{gpmc},#{zt}) 
 	</insert>
-	<select id="selectObj" parameterType="int" resultType="Gpdm">
+	
+	<select id="selectObj" parameterType="String" resultType="Gpdm">
 		select * from gp_gpdm where gpdm = #{gpdm}
 	</select>
 	<select id="selectList" parameterType="Gpdm" resultType="List">

@@ -1,15 +1,15 @@
 package com.module.entity.gp;
 
 public class Gpdm {
-	private int gpdm;
+	private String gpdm;
 	private String gpmc;
 	private int zt;
 
-	public int getGpdm() {
+	public String getGpdm() {
 		return gpdm;
 	}
 
-	public void setGpdm(int gpdm) {
+	public void setGpdm(String gpdm) {
 		this.gpdm = gpdm;
 	}
 
