@@ -4,8 +4,7 @@
 <mapper namespace="dp">
 	<!-- 新增 -->
 	<insert id="save" parameterType="Dp">
-		insert into gp_dp(
-		dpid,
+		replace into gp_dp(
 		zsmc,
 		dqzs,
 		jrbhz,
@@ -14,7 +13,6 @@
 		cje
 		)
 		values(
-		#{dpid},
 		#{zsmc},
 		#{dqzs},
 		#{jrbhz},

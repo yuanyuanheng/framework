@@ -1,21 +1,12 @@
 package com.module.entity.gp;
 
 public class Dp {
-	private String dpid;
 	private String zsmc;
 	private float dqzs;
 	private float jrbhz;
 	private float jrbhbfb;
 	private float cjl;
 	private float cje;
-
-	public String getDpid() {
-		return dpid;
-	}
-
-	public void setDpid(String dpid) {
-		this.dpid = dpid;
-	}
 
 	public String getZsmc() {
 		return zsmc;
@@ -28,7 +19,7 @@ public class Dp {
 	public float getDqzs() {
 		return dqzs;
 	}
-
+ 
 	public void setDqzs(float dqzs) {
 		this.dqzs = dqzs;
 	}

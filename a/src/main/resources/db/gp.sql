@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS gp_gpdm;
 CREATE TABLE gp_gpdm (
 	gpdm	varchar(32)	NOT NULL COMMENT '股票代码',
 	gpmc	varchar(50) 	DEFAULT NULL COMMENT '股票名字',
-	zt	Integer	DEFAULT NULL COMMENT '状态0无效1大盘2股票',
   PRIMARY KEY (gpdm)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- ----------------------------
@@ -15,14 +14,12 @@ CREATE TABLE gp_gpdm (
 -- ----------------------------
 DROP TABLE IF EXISTS gp_dp;
 CREATE TABLE gp_dp (
-	dpid varchar(32) NOT NULL,
 	zsmc	varchar(10)	DEFAULT NULL COMMENT '指数名称',
 	dqzs	float	DEFAULT NULL COMMENT '当前指数',
 	jrbhz	float	DEFAULT NULL COMMENT '今日变化值',
 	jrbhbfb	float	DEFAULT NULL COMMENT '今日变化百分比',
 	cjl	float	DEFAULT NULL COMMENT '成交量（手）',
-	cje	float	DEFAULT NULL COMMENT '成交额（万元）',
-  PRIMARY KEY (dpid)
+	cje	float	DEFAULT NULL COMMENT '成交额（万元）'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -30,7 +27,6 @@ CREATE TABLE gp_dp (
 -- ----------------------------
 DROP TABLE IF EXISTS gp_gp;
 CREATE TABLE gp_gp (
-	gpid varchar(32) NOT NULL,
 	gpmc	varchar(50) 	DEFAULT NULL COMMENT '股票名字',
 	jrkpj	float	DEFAULT NULL COMMENT '今日开盘价',
 	zrspj	float	DEFAULT NULL COMMENT '昨日收盘价',
@@ -62,7 +58,5 @@ CREATE TABLE gp_gp (
 	mm5sq	float	DEFAULT NULL COMMENT '卖5申请',
 	mm5bj	float	DEFAULT NULL COMMENT '卖5报价',
 	rq	varchar(10) 	DEFAULT NULL COMMENT '	日期',
-	sj	varchar(8) 	DEFAULT NULL COMMENT '	时间',
-
-  PRIMARY KEY (gpid)
+	sj	varchar(8) 	DEFAULT NULL COMMENT '	时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

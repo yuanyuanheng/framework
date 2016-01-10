@@ -3,8 +3,7 @@ package com.module.entity.gp;
 public class Gpdm {
 	private String gpdm;
 	private String gpmc;
-	private int zt;
-
+	
 	public String getGpdm() {
 		return gpdm;
 	}
@@ -19,14 +18,6 @@ public class Gpdm {
 
 	public void setGpmc(String gpmc) {
 		this.gpmc = gpmc;
-	}
-
-	public int getZt() {
-		return zt;
-	}
-
-	public void setZt(int zt) {
-		this.zt = zt;
 	}
 
 }

@@ -10,6 +10,7 @@
 		<typeAlias type="com.module.entity.gp.Dp" alias="Dp" />
 		<typeAlias type="com.module.entity.gp.Gp" alias="Gp" />
 		<typeAlias type="com.module.entity.gp.Gpdm" alias="Gpdm" />
+		<typeAlias type="com.module.entity.gp.Limit" alias="Limit" />
 	</typeAliases>
 </configuration>
 	

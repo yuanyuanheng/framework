@@ -20,33 +20,28 @@ public class SinaDataOpt{
 	private  StringBuffer sBufferURI = new StringBuffer();
 	private  Map<String,String[]> mapData = new HashMap<String,String[]>();
 	
-	public  Map<String,String[]> getSinaData(String sSinaGpdm){
+	public  Map<String,String[]> getSinaData(String sSinaGpdm) throws Exception{
 		sBufferData.setLength(0);
 		sBufferURI.setLength(0);
 		mapData.clear();
-		try {
-			CloseableHttpClient httpClient = HttpClients.createDefault();
-			httpGet.setURI(URI.create("http://hq.sinajs.cn/list="+sSinaGpdm));
-			CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-			HttpEntity entity = httpResponse.getEntity();
-			sBufferData.append(EntityUtils.toString(entity));
-			sBufferData.deleteCharAt(sBufferData.length()-1);
-			String[] arrFirst = DataOpt.splitData(sBufferData.toString(), ";");
-			for(String sValue:arrFirst){
-				if(sValue.trim().length()<40) continue;
-				String[] arrSecond = DataOpt.splitData(DataOpt.subData(sValue,"\"","\""), ",");
-				mapData.put(DataOpt.subData(sValue,"_sh","="), arrSecond);
-			}
-			arrFirst = null;
-			sBufferURI.setLength(0);
-			sBufferData.setLength(0);
-			httpGet.releaseConnection();
-			httpClient.close();
-			httpResponse.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		httpGet.setURI(URI.create("http://hq.sinajs.cn/list="+sSinaGpdm));
+		CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
+		HttpEntity entity = httpResponse.getEntity();
+		sBufferData.append(EntityUtils.toString(entity));
+		sBufferData.deleteCharAt(sBufferData.length()-1);
+		String[] arrFirst = DataOpt.splitData(sBufferData.toString(), ";");
+		for(String sValue:arrFirst){
+			if(sValue.trim().length()<40) continue;
+			String[] arrSecond = DataOpt.splitData(DataOpt.subData(sValue,"\"","\""), ",");
+			mapData.put(DataOpt.subData(sValue,"_s_","="), arrSecond);
 		}
+		arrFirst = null;
+		sBufferURI.setLength(0);
+		sBufferData.setLength(0);
+		httpGet.releaseConnection();
+		httpClient.close();
+		httpResponse.close();
 		return mapData;
 	}
 	

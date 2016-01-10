@@ -1,7 +1,6 @@
 package com.module.entity.gp;
 
 public class Gp {
-	private String gpid;
 	private String gpmc;
 	private float jrkpj;
 	private float zrspj;
@@ -34,14 +33,6 @@ public class Gp {
 	private float mm5bj;
 	private String rq;
 	private String sj;
-
-	public String getGpid() {
-		return gpid;
-	}
-
-	public void setGpid(String gpid) {
-		this.gpid = gpid;
-	}
 
 	public String getGpmc() {
 		return gpmc;

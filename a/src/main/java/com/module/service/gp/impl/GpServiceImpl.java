@@ -10,7 +10,6 @@ import com.module.service.gp.GpService;
 public class GpServiceImpl extends BaseServiceImpl implements GpService {
     
 	public void save(Object obj) throws Exception {
-		logger.info("gpImpl save");
 		dao.save("gp.save", obj);
 	}
 	
