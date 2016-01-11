@@ -1,6 +1,5 @@
 package com.module.task;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,10 +12,12 @@ import org.springframework.stereotype.Component;
 
 import com.module.entity.gp.Gpdm;
 import com.module.entity.gp.Limit;
+import com.module.entity.gp.Sina;
 import com.module.service.gp.DpService;
 import com.module.service.gp.GpService;
 import com.module.service.gp.GpdmService;
-import com.module.util.DataOpt;
+import com.module.service.gp.SinaService;
+import com.module.util.DateTime;
 import com.module.util.SinaDataOpt;
 
 @Component
@@ -30,56 +31,60 @@ public class DataPullTask {
 
 	@Resource(name = "gpdmService")
 	GpdmService gpdmService;
-
+	
+	@Resource(name = "sinaService")
+	SinaService sinaService;
+	
 	// @Scheduled(fixedRate = 5000)
 	 
-/*
+
 	@Scheduled(fixedDelay = 60*60*1000)
 	public void flushGpdm_0() {
 		log.info("flushGpdm_0 start");
-		flushGpdm(0, 200001);
+		flushGpdm(0, 200000,50);
 		log.info("flushGpdm_0 stop");
 	}
+	
 	@Scheduled(fixedDelay = 60*60*1000)
 	public void flushGpdm_1() {
 		log.info("flushGpdm_1 start");
-		flushGpdm(200001, 400001);
+		flushGpdm(200000, 200000,50);
 		log.info("flushGpdm_1 stop");
 	}
 	
 	@Scheduled(fixedDelay = 60*60*1000)
 	public void flushGpdm_2() {
 		log.info("flushGpdm_2 start");
-		flushGpdm(400001, 600001);
+		flushGpdm(400000, 200000,50);
 		log.info("flushGpdm_2 stop");
 	}
 	
 	@Scheduled(fixedDelay = 60*60*1000)
 	public void flushGpdm_3() {
 		log.info("flushGpdm_3 start");
-		flushGpdm(600001, 800001);
+		flushGpdm(600000, 200000,50);
 		log.info("flushGpdm_3 stop");
 	}
 	
 	@Scheduled(fixedDelay = 60*60*1000)
 	public void flushGpdm_4() {
 		log.info("flushGpdm_4 start");
-		flushGpdm(800001, 1000001);
+		flushGpdm(800000, 200000,50);
 		log.info("flushGpdm_4 stop");
 	}
 	
-*/	
+	/*	
 	@Scheduled(fixedDelay = 600000)
 	public void flushGp_0() {
 		log.info("flushGp_0 start");
-		flushGpAndDp(0,3000,30);
+		flushSina(0,3000,30);
 		log.info("flushGp_0 stop"); 
 	}
 	
 	@Scheduled(fixedDelay = 600000)
 	public void flushGp_1() {
 		log.info("flushGp_1 start");
-		flushGpAndDp(3000,6000,30);
+		flushSina(3000,6000,30);
 		log.info("flushGp_1 stop"); 
 	}
 	
@@ -87,30 +92,31 @@ public class DataPullTask {
 	@Scheduled(fixedDelay = 600000)
 	public void flushGp_2() {
 		log.info("flushGp_2 start");
-		flushGpAndDp(6000,9000,30);
+		flushSina(6000,9000,30);
 		log.info("flushGp_2 stop"); 
 	}
 	
 	@Scheduled(fixedDelay = 600000)
 	public void flushGp_3() {
 		log.info("flushGp_3 start");
-		flushGpAndDp(9000,12000,30);
+		flushSina(9000,12000,30);
 		log.info("flushGp_3 stop"); 
 	}
 	
 	@Scheduled(fixedDelay = 600000)
 	public void flushGp_4() {
 		log.info("flushGp_4 start");
-		flushGpAndDp(12000,14000,30);
+		flushSina(12000,14000,30);
 		log.info("flushGp_4 stop"); 
 	}
-	
-	
-	public void flushGpAndDp(int nBegin,int nLen,int nTime){
-		SinaDataOpt sinaDataOpt = new SinaDataOpt();
+	*/
+	public void flushSina(int nBegin,int nLen,int nTime){
+		SinaDataOpt sinaGp = new SinaDataOpt();
+		SinaDataOpt sinaDp = new SinaDataOpt();
 		StringBuffer sBuffer = new StringBuffer();
-		Map<String,String> mapTemp = new HashMap<String,String>();
-		Map<String, String[]> mapData = null;
+		Sina clsSina = new Sina();
+		Map<String, String> mapGp = null;
+		Map<String, String> mapDp = null;
 		Limit limit = new Limit();
 		try {
 			for(int i=0;i<nTime;i++){
@@ -118,25 +124,21 @@ public class DataPullTask {
 				limit.setnLen(nLen/nTime);
 				String sGpdm = readGpdm(limit,sBuffer);
 				if(sGpdm.trim().equals("")) break;
-				mapData = sinaDataOpt.getSinaData(sGpdm,"str_");
-				saveGp(mapData,mapTemp);
-				mapTemp.clear();
-				mapData = null;
-				mapData = sinaDataOpt.getSinaData(sGpdm.replace("s", "s_s"),"_s_");
-				saveDp(mapData,mapTemp);
-				mapTemp.clear();
-				mapData = null;
+				mapGp = sinaGp.getSinaData(sGpdm,"str_");
+				mapDp = sinaDp.getSinaData(sGpdm.replace("s", "s_s"),"_s_");
+				saveSina(mapGp,mapDp,clsSina);
 				nBegin = nBegin + nLen/nTime;
 				sBuffer.setLength(0);
 			}
 		} catch (Exception e) {
-			log.warn(e.getMessage());
+			log.error(e.getMessage());
 		}
-		mapTemp.clear();
-		sinaDataOpt.destroyData();
-		mapTemp = null;
+		sinaGp.destroyData();
+		sinaDp.destroyData();
+		clsSina = null;
 		sBuffer = null;
-		sinaDataOpt = null;
+		sinaGp = null;
+		sinaDp = null;
 		limit = null;
 	}
 	
@@ -149,35 +151,36 @@ public class DataPullTask {
 			}
 			sBuffer.deleteCharAt(sBuffer.length()-1);
 		} catch (Exception e) {
-			log.warn(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return sBuffer.toString();
 	}
 
-	public void flushGpdm(int nbegin, int nLen) {
+	public void flushGpdm(int nBegin, int nLen,int nTime) {
 		StringBuffer sBuffer = new StringBuffer();
 		SinaDataOpt sinaDataOpt = new SinaDataOpt();
 		Gpdm clsGpdm = new Gpdm();
-		Map<String, String[]> mapData = null;
-		for (int i = nbegin; i < nLen; i++) {
-			String sGpdm = "00000" + i;
+		Map<String, String> mapData = null;
+		
+		for (int i = 0,j=0; i < nLen; i++,j++) {
+			String sGpdm = "00000" + (nBegin+i);
 			sGpdm = sGpdm.substring(sGpdm.length() - 6, sGpdm.length());
 			sBuffer.append("s_sh" + sGpdm + ",");
-			if (i % 50 == 0) {
-				try{
-					sBuffer.append("s_sh" + sGpdm);
-					mapData = sinaDataOpt.getSinaData(sBuffer.toString(),"_s_");
-					saveGpdm(mapData,clsGpdm);
-					mapData = null;
-					mapData = sinaDataOpt.getSinaData(sBuffer.toString().replace('h', 'z'),"_s_");
-					saveGpdm(mapData,clsGpdm);
-					mapData = null;
-					sBuffer.setLength(0);
-				}catch(Exception e)
-				{
-					log.warn(e.getMessage());
-				}
-				
+			if(j<nTime) continue;
+			try{
+				j=0;
+				sBuffer.deleteCharAt(sBuffer.length()-1);
+				log.info(sBuffer.toString());
+				mapData = sinaDataOpt.getSinaData(sBuffer.toString(),"_s_");
+				saveGpdm(mapData,clsGpdm);
+				mapData = null;
+				mapData = sinaDataOpt.getSinaData(sBuffer.toString().replace('h', 'z'),"_s_");
+				saveGpdm(mapData,clsGpdm);
+				mapData = null;
+				sBuffer.setLength(0);
+			}catch(Exception e)
+			{
+				log.error(e.getMessage());
 			}
 		}
 		sinaDataOpt.destroyData();
@@ -186,24 +189,27 @@ public class DataPullTask {
 		clsGpdm = null;
 	}
 
-	private void saveGpdm(Map<String, String[]> mapData,Gpdm clsGpdm) throws Exception{
-		for (Map.Entry<String, String[]> entry : mapData.entrySet()) {
+	private void saveSina(Map<String, String> gpData,Map<String, String> dpData,Sina clsSina) throws Exception{
+		if(gpData.size() != dpData.size()) return ;
+		for (Map.Entry<String, String> entry : gpData.entrySet()) {
+			clsSina.setGpdm(entry.getKey());
+			clsSina.setGp(entry.getValue());
+			clsSina.setDp(dpData.get(entry.getKey()));
+			clsSina.setRqsj(DateTime.ToString());
+			sinaService.save(clsSina);
+		}
+	}
+	
+	private void saveGpdm(Map<String, String> mapData,Gpdm clsGpdm) throws Exception{
+		for (Map.Entry<String, String> entry : mapData.entrySet()) {
 			clsGpdm.setGpdm(entry.getKey());
-			clsGpdm.setGpmc(entry.getValue()[0]);
+			String sGpmc = entry.getValue();
+			sGpmc = sGpmc.substring(0,sGpmc.indexOf(','));
+			clsGpdm.setGpmc(sGpmc);
+			log.info(clsGpdm.toString());
 			gpdmService.save(clsGpdm);
 		}
 	}
 	
-	private void saveGp(Map<String, String[]> mapData,Map<String,String> mapTemp) throws Exception{
-		for (Map.Entry<String, String[]> entry : mapData.entrySet()) {
-			gpService.save(DataOpt.buildMap(DataOpt.GP_FIELDNAME, entry.getValue(), mapTemp));
-		}
-	}
-	
-	private void saveDp(Map<String, String[]> mapData,Map<String,String> mapTemp) throws Exception{
-		for (Map.Entry<String, String[]> entry : mapData.entrySet()) {
-			dpService.save(DataOpt.buildMap(DataOpt.DP_FIELDNAME, entry.getValue(), mapTemp));
-		}
-	}
 
 }

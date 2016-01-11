@@ -9,7 +9,7 @@
 		<result column="rqsj" property="rqsj" />
 	</resultMap>
 	<insert id="save" parameterType="Sina">
-		replace into gp_sina(gpdm,gp,dp,rqsj)
+		insert into gp_sina(gpdm,gp,dp,rqsj)
 		values(#{gpdm},#{gp},#{dp},#{rqsj})
 	</insert>
 </mapper>

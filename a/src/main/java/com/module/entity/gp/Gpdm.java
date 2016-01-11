@@ -19,5 +19,9 @@ public class Gpdm {
 	public void setGpmc(String gpmc) {
 		this.gpmc = gpmc;
 	}
+	
+	public String toString(){
+		return (this.gpdm+":"+this.gpmc);
+	}
 
 }

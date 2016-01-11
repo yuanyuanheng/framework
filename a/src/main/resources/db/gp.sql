@@ -18,8 +18,7 @@ CREATE TABLE gp_sina (
 	rqsj varchar(50) NOT NULL COMMENT '日期时间',
 	gpdm	varchar(32)	DEFAULT NULL COMMENT '股票代码',
 	gp	varchar(255) 	DEFAULT NULL COMMENT '股票',
-	dp	varchar(255) 	DEFAULT NULL COMMENT '大盘',
-	PRIMARY KEY (rqsj)
+	dp	varchar(255) 	DEFAULT NULL COMMENT '大盘'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Table structure for gp_dp
