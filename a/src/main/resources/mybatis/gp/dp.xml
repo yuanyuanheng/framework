@@ -3,8 +3,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dp">
 	<!-- 新增 -->
-	<insert id="save" parameterType="Dp">
-		replace into gp_dp(
+	<insert id="save" parameterType="Map">
+		insert into gp_dp(
 		zsmc,
 		dqzs,
 		jrbhz,

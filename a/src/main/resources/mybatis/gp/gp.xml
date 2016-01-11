@@ -71,6 +71,6 @@
 		#{mm5bj},
 		#{rq},
 		#{sj})
-		<!-- select where not exists(select * from gp_gp where gpmc=#{gpmc} and rq=#{rq} and sj=#{sj}) -->
+		 <!--select where not exists(select * from gp_gp where gpmc=#{gpmc} and rq=#{rq} and sj=#{sj})  -->
 	</insert>
 </mapper>

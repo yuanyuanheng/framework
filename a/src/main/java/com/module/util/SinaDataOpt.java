@@ -20,7 +20,7 @@ public class SinaDataOpt{
 	private  StringBuffer sBufferURI = new StringBuffer();
 	private  Map<String,String[]> mapData = new HashMap<String,String[]>();
 	
-	public  Map<String,String[]> getSinaData(String sSinaGpdm) throws Exception{
+	public  Map<String,String[]> getSinaData(String sSinaGpdm,String sSub) throws Exception{
 		sBufferData.setLength(0);
 		sBufferURI.setLength(0);
 		mapData.clear();
@@ -34,7 +34,7 @@ public class SinaDataOpt{
 		for(String sValue:arrFirst){
 			if(sValue.trim().length()<40) continue;
 			String[] arrSecond = DataOpt.splitData(DataOpt.subData(sValue,"\"","\""), ",");
-			mapData.put(DataOpt.subData(sValue,"_s_","="), arrSecond);
+			mapData.put(DataOpt.subData(sValue,sSub,"="), arrSecond);
 		}
 		arrFirst = null;
 		sBufferURI.setLength(0);

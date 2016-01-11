@@ -7,14 +7,26 @@ DROP TABLE IF EXISTS gp_gpdm;
 CREATE TABLE gp_gpdm (
 	gpdm	varchar(32)	NOT NULL COMMENT '股票代码',
 	gpmc	varchar(50) 	DEFAULT NULL COMMENT '股票名字',
-  PRIMARY KEY (gpdm)
+  	PRIMARY KEY (gpdm)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for gp_sina
+-- ----------------------------
+DROP TABLE IF EXISTS gp_sina;
+CREATE TABLE gp_sina (
+	rqsj varchar(50) NOT NULL COMMENT '日期时间',
+	gpdm	varchar(32)	DEFAULT NULL COMMENT '股票代码',
+	gp	varchar(255) 	DEFAULT NULL COMMENT '股票',
+	dp	varchar(255) 	DEFAULT NULL COMMENT '大盘',
+	PRIMARY KEY (rqsj)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Table structure for gp_dp
 -- ----------------------------
 DROP TABLE IF EXISTS gp_dp;
 CREATE TABLE gp_dp (
-	zsmc	varchar(10)	DEFAULT NULL COMMENT '指数名称',
+	zsmc	varchar(50)	DEFAULT NULL COMMENT '指数名称',
 	dqzs	float	DEFAULT NULL COMMENT '当前指数',
 	jrbhz	float	DEFAULT NULL COMMENT '今日变化值',
 	jrbhbfb	float	DEFAULT NULL COMMENT '今日变化百分比',

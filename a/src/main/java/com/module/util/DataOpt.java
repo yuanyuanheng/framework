@@ -3,11 +3,13 @@ package com.module.util;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+import com.module.entity.gp.Dp;
 import com.module.entity.gp.Gp;
 
 public class DataOpt {
 	
 	public static String[] GP_FIELDNAME = splitData(getFieldName(Gp.class),",");
+	public static String[] DP_FIELDNAME = splitData(getFieldName(Dp.class),",");
 	
 	public static String subData(String sData,String sBegin,String sEnd) {
 		return sData.substring(sData.indexOf(sBegin)+sBegin.length(), sData.lastIndexOf(sEnd));

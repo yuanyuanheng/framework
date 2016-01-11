@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sina">
+	<resultMap type="Sina" id="GpmpResultMap">
+		<id column="gpdm" property="gpdm" />
+		<result column="gp" property="gp" />
+		<result column="dp" property="dp" />
+		<result column="rqsj" property="rqsj" />
+	</resultMap>
+	<insert id="save" parameterType="Sina">
+		replace into gp_sina(gpdm,gp,dp,rqsj)
+		values(#{gpdm},#{gp},#{dp},#{rqsj})
+	</insert>
+</mapper>
