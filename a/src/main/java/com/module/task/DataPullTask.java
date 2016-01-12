@@ -37,7 +37,7 @@ public class DataPullTask {
 	
 	// @Scheduled(fixedRate = 5000)
 	 
-
+	
 	@Scheduled(fixedDelay = 60*60*1000)
 	public void flushGpdm_0() {
 		log.info("flushGpdm_0 start");
@@ -73,7 +73,7 @@ public class DataPullTask {
 		log.info("flushGpdm_4 stop");
 	}
 	
-	/*	
+	/*
 	@Scheduled(fixedDelay = 600000)
 	public void flushGp_0() {
 		log.info("flushGp_0 start");
@@ -205,7 +205,7 @@ public class DataPullTask {
 			clsGpdm.setGpdm(entry.getKey());
 			String sGpmc = entry.getValue();
 			sGpmc = sGpmc.substring(0,sGpmc.indexOf(','));
-			clsGpdm.setGpmc(sGpmc);
+			clsGpdm.setGpmc(entry.getValue());
 			log.info(clsGpdm.toString());
 			gpdmService.save(clsGpdm);
 		}
