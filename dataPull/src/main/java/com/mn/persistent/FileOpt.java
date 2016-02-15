@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mn.proc.PersistentOpt;
 
-public class DbFile implements PersistentOpt{
+public class FileOpt extends PersistentOpt{
 
 	private com.mn.bean.File m_clsfile;
 	
@@ -17,24 +17,31 @@ public class DbFile implements PersistentOpt{
 		this.m_clsfile = m_clsfile;
 	}
 
-	public List<Object> select() {
+	@Override
+	public boolean start() {
+		// TODO Auto-generated method stub
+		
+		return false;
+	}
+
+	@Override
+	public void end() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Object> select(String sSql) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean updata() {
+	@Override
+	public void update(String sSql) {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
-	public boolean insert() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
-	public boolean delete() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 }

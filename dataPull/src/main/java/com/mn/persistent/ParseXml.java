@@ -18,9 +18,9 @@ public class ParseXml implements Const {
 		  digester.addObjectCreate( "dbFile/file", "com.mn.bean.File");
 		  digester.addSetProperties( "dbFile/file" );
 		  digester.addSetNext( "dbFile/file", "setM_clsfile", "com.mn.bean.File" );
-		  DbFile dbFile;
+		  FileOpt dbFile;
 		try {
-			dbFile = (DbFile) digester.parse(new URL(CURR_PATH+PERSISTENT_CONFIG_RESOURCE));
+			dbFile = (FileOpt) digester.parse(new URL(CURR_PATH+PERSISTENT_CONFIG_RESOURCE));
 			LOG.info(dbFile.getM_clsfile().getM_sFilename());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

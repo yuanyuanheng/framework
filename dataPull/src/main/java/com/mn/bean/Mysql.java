@@ -6,6 +6,17 @@ public class Mysql {
 	private String m_sDriverClassName;
 	private String m_sUrl;
 
+	public Mysql(String m_sUserName,String m_sPassword,String m_sDriverClassName,String m_sUrl){
+		this.m_sUserName = m_sUserName;
+		this.m_sPassword = m_sPassword;
+		this.m_sDriverClassName = m_sDriverClassName;
+		this.m_sUrl = m_sUrl;
+	}
+	
+	public Mysql(){
+		
+	}
+	
 	public String getM_sUserName() {
 		return m_sUserName;
 	}
