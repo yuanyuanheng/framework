@@ -4,6 +4,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.mn.bean.Mysql;
+import com.mn.persistent.MysqlOpt;
+import com.mn.proc.PersistentOpt;
+import com.mn.util.ReadText;
 
 public class Init {
 
@@ -31,9 +34,15 @@ public class Init {
 		return m_logger;
 	}
 	
-	public void initTable(){
-		StringBuilder sBuilder = new StringBuilder();
-		sBuilder.append("");
+	public static void initMysqlTable(){
+		String sSql = ReadText.Read(Const.CURR_PATH+Const.SQL_TABLE);
+		if(sSql.trim().length()>0){
+			PersistentOpt mysqlOpt = new MysqlOpt();
+			mysqlOpt.start();
+			mysqlOpt.update(sSql);
+			mysqlOpt.end();
+			mysqlOpt = null;
+		}
 	}
 
 }
