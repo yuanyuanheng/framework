@@ -2,8 +2,8 @@ package common;
 
 import junit.framework.TestCase;
 
-public class TestBase extends TestCase implements Base{
+public class TestBase extends TestCase{
 	public void testLog(){
-		log.info("this is the test log");
+		Base.log(this.getClass()).info("this is the test log");
 	}
 }

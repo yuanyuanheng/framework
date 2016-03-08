@@ -12,7 +12,7 @@ import org.apache.http.protocol.HttpContext;
 
 import common.Base;
 
-public class GetThread extends Thread implements Base{
+public class GetThread extends Thread{
 	private final CloseableHttpClient httpClient;
 	private final HttpContext context;
 	private final HttpGet httpget;
@@ -29,16 +29,16 @@ public class GetThread extends Thread implements Base{
 			CloseableHttpResponse response = httpClient.execute(httpget, context);
 			try {
 				HttpEntity entity = response.getEntity();
-				new EntityProc(entity);
+				new EntityProc(httpget.getURI().toString(),entity);
 			} finally {
 				response.close();
 			}
-		} catch (ClientProtocolException ex) {
-			ex.printStackTrace();
-			log.error(ex);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-			log.error(ex);
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+			Base.log(this.getClass()).error(e.getCause());
+		} catch (IOException e) {
+			e.printStackTrace();
+			Base.log(this.getClass()).error(e.getCause());
 		}
 	}
 

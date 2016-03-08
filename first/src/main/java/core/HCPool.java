@@ -4,9 +4,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
-import common.Base;
-
-public class HCPool implements Base{
+public class HCPool{
 
 	private static PoolingHttpClientConnectionManager mgr = null;
 	

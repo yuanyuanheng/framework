@@ -6,10 +6,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import common.Base;
 import junit.framework.TestCase;
 
-public class TestHCPool extends TestCase implements Base{
+public class TestHCPool extends TestCase{
 	public void testGetThread(){
 		CloseableHttpClient hc = HCPool.getHC();
-		HttpGet hg = new HttpGet("http://tieba.baidu.com/f?ie=utf-8&kw=%E7%8F%A0%E6%B5%B7&fr=search");
+		HttpGet hg = new HttpGet("http://blog.csdn.net/lonely_fireworks/article/details/7962171");
 		GetThread thread = new GetThread(hc,hg);
 		thread.start();
 		try {
@@ -17,7 +17,7 @@ public class TestHCPool extends TestCase implements Base{
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			log.error(e.getMessage());
+			Base.log(this.getClass()).error(e.getCause());
 		}
 	}
 }
