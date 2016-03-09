@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 public class TestHCPool extends TestCase{
 	public void testGetThread(){
 		CloseableHttpClient hc = HCPool.getHC();
-		HttpGet hg = new HttpGet("http://blog.csdn.net/lonely_fireworks/article/details/7962171");
+		HttpGet hg = new HttpGet("http://my.oschina.net/u/1024767/blog/178960");
 		GetThread thread = new GetThread(hc,hg);
 		thread.start();
 		try {

@@ -35,10 +35,10 @@ public class GetThread extends Thread{
 			}
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
-			Base.log(this.getClass()).error(e.getCause());
+			Base.log(this.getClass()).error(e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
-			Base.log(this.getClass()).error(e.getCause());
+			Base.log(this.getClass()).error(e.getMessage());
 		}
 	}
 
