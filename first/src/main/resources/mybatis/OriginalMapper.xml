@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Original">
+	<insert id="insert" parameterType="Original">
+		insert into Original(map_key, map_value, value_type, status, key_old)
+			values(#{m_sKey},#{m_sValue},#{m_sType},#{m_nStatus},#{m_sKeyOld}) 
+	</insert>
+	
+	<update id="update" parameterType="Original">
+        update Original set 
+        <if test=" m_sKey != null and m_sKey != '' ">
+            map_key=#{m_sKey}
+        </if>
+        <if test=" m_sValue != null and m_sValue != '' ">
+            , map_value=#{m_sValue}
+        </if>
+        <if test=" m_sType != null and m_sType != '' ">
+            , value_type=#{m_sType}
+        </if> 
+        <if test=" m_nStatus != null and m_nStatus != '' ">
+            , status=#{m_nStatus}
+        </if>
+        <if test=" m_sKeyOld != null and m_sKeyOld != '' ">
+            , key_old=#{m_sKeyOld}
+        </if>
+        
+	</update>
+	
+	<select id="selectList" parameterType="Original" resultType="Map">
+		select * from Original where 1=1 
+		<if test=" m_sKey != null and m_sKey != '' ">
+            and map_key=#{m_sKey}
+        </if>
+        <if test=" m_sValue != null and m_sValue != '' ">
+            and map_value=#{m_sValue}
+        </if>
+        <if test=" m_sType != null and m_sType != '' ">
+            and value_type=#{m_sType}
+        </if>
+        <if test=" m_nStatus != null and m_nStatus != '' ">
+            and status=#{m_nStatus}
+        </if>
+        <if test=" m_sKeyOld != null and m_sKeyOld != '' ">
+            and key_old=#{m_sKeyOld}
+        </if>
+	</select>
+
+</mapper>
