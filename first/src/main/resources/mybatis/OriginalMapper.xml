@@ -2,47 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Original">
 	<insert id="insert" parameterType="Original">
-		insert into Original(map_key, map_value, value_type, status, key_old)
-			values(#{m_sKey},#{m_sValue},#{m_sType},#{m_nStatus},#{m_sKeyOld}) 
+		insert into Original(id,url, content, code, status, urlOld)
+			values(#{sId},#{sUrl},#{sContent},#{sCode},#{nStatus},#{sUrlOld}) 
 	</insert>
 	
 	<update id="update" parameterType="Original">
-        update Original set 
-        <if test=" m_sKey != null and m_sKey != '' ">
-            map_key=#{m_sKey}
+        update Original set id=#{sId}
+        <if test=" sUrl != null and sUrl != '' ">
+            , url=#{sUrl}
         </if>
-        <if test=" m_sValue != null and m_sValue != '' ">
-            , map_value=#{m_sValue}
+        <if test=" sContent != null and sContent != '' ">
+            , content=#{sContent}
         </if>
-        <if test=" m_sType != null and m_sType != '' ">
-            , value_type=#{m_sType}
+        <if test=" sCode != null and sCode != '' ">
+            , code=#{sCode}
         </if> 
-        <if test=" m_nStatus != null and m_nStatus != '' ">
-            , status=#{m_nStatus}
+        <if test=" nStatus != null and nStatus != '' ">
+            , status=#{nStatus}
         </if>
-        <if test=" m_sKeyOld != null and m_sKeyOld != '' ">
-            , key_old=#{m_sKeyOld}
+        <if test=" sUrlOld != null and sUrlOld != '' ">
+            , url_old=#{sUrlOld}
         </if>
         
 	</update>
 	
-	<select id="selectList" parameterType="Original" resultType="Map">
+	<select id="selectList" parameterType="Original" resultMap="OriginalMap">
 		select * from Original where 1=1 
-		<if test=" m_sKey != null and m_sKey != '' ">
-            and map_key=#{m_sKey}
+		<if test=" sId != null and sId != '' ">
+            and id=#{sId}
         </if>
-        <if test=" m_sValue != null and m_sValue != '' ">
-            and map_value=#{m_sValue}
+		<if test=" sUrl != null and sUrl != '' ">
+            and url=#{sUrl}
         </if>
-        <if test=" m_sType != null and m_sType != '' ">
-            and value_type=#{m_sType}
+        <if test=" sContent != null and sContent != '' ">
+            and content=#{sContent}
         </if>
-        <if test=" m_nStatus != null and m_nStatus != '' ">
-            and status=#{m_nStatus}
+        <if test=" sCode != null and sCode != '' ">
+            and code=#{sCode}
         </if>
-        <if test=" m_sKeyOld != null and m_sKeyOld != '' ">
-            and key_old=#{m_sKeyOld}
+        <if test=" nStatus != null and nStatus != '' ">
+            and status=#{nStatus}
+        </if>
+        <if test=" sUrlOld != null and sUrlOld != '' ">
+            and urlOld=#{sUrlOld}
         </if>
 	</select>
-
+	
+	<resultMap id="OriginalMap" type="Original">
+		<id property="sId" column="id"/>
+		<result property="sUrl" column="url"/>
+		<result property="sContent" column="content"/>
+		<result property="sCode" column="code"/>
+		<result property="nStatus" column="status"/>
+		<result property="sUrlOld" column="urlOld"/>
+	</resultMap>
 </mapper>

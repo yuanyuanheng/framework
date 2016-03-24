@@ -34,8 +34,8 @@ public class GetThread extends Thread{
 			CloseableHttpResponse response = httpClient.execute(httpget, context);
 			try {
 				HttpEntity entity = response.getEntity();
-				OriginalProc objOriginalProc = new OriginalProc(httpget.getURI().toString(),entity,m_sKeyOld,m_sValue);
-				objOriginalProc.save();
+				/*OriginalProc objOriginalProc = new OriginalProc(httpget.getURI().toString(),entity,m_sKeyOld,m_sValue);
+				objOriginalProc.save();*/
 			} finally {
 				response.close();
 			}

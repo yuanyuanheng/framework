@@ -1,6 +1,6 @@
 package common;
 
-public class Convert {
+public class ConvertHex {
 	public static String toString(byte[] src) {
 		StringBuilder sBuilder = new StringBuilder();
 		for (byte b : src) {

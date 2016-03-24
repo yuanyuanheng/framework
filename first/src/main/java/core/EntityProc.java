@@ -5,17 +5,17 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.util.EntityUtils;
 
 import common.Base;
-import common.Convert;
+import common.ConvertHex;
 import mysql.MysqlOpt;
 import status.CaptureStatus;
 
 public class EntityProc {
 	public EntityProc(String sUrl, HttpEntity entity) {
 		try {
-			String sContent = Convert.toString(EntityUtils.toByteArray(entity));
+			String sContent = ConvertHex.toString(EntityUtils.toByteArray(entity));
 			String sContentType = ContentType.getOrDefault(entity).getCharset().name();
 			String sSql = String.format("insert into Original(map_key,map_value,value_type,status) values('%s','%s','%s',%d)",
-					sUrl, sContent, sContentType, CaptureStatus.NO.getM_nIndex());
+					sUrl, sContent, sContentType, CaptureStatus.NO.getnIndex());
 			MysqlOpt mysqlOpt = new MysqlOpt();
 			mysqlOpt.start();
 			mysqlOpt.update(sSql);

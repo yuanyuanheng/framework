@@ -1,50 +1,59 @@
 package entity;
 
 public class Original {
-	private String m_sKey;
-	private String m_sValue;
-	private String m_sType;
-	private int m_nStatus;
-	private String m_sKeyOld;
+	private String sId;
+	private String sUrl;
+	private String sContent;
+	private String sCode;
+	private int nStatus;
+	private String sUrlOld;
 	
-	public String getM_sKeyOld() {
-		return m_sKeyOld;
+	public String getsId() {
+		return sId;
 	}
 
-	public void setM_sKeyOld(String m_sKeyOld) {
-		this.m_sKeyOld = m_sKeyOld;
+	public void setsId(String sId) {
+		this.sId = sId;
 	}
 
-	public String getM_sKey() {
-		return m_sKey;
+	public String getsUrlOld() {
+		return sUrlOld;
 	}
 
-	public void setM_sKey(String m_sKey) {
-		this.m_sKey = m_sKey;
+	public void setsUrlOld(String sUrlOld) {
+		this.sUrlOld = sUrlOld;
 	}
 
-	public String getM_sValue() {
-		return m_sValue;
+	public String getsUrl() {
+		return sUrl;
 	}
 
-	public void setM_sValue(String m_sValue) {
-		this.m_sValue = m_sValue;
+	public void setsUrl(String sUrl) {
+		this.sUrl = sUrl;
 	}
 
-	public String getM_sType() {
-		return m_sType;
+	public String getsContent() {
+		return sContent;
 	}
 
-	public void setM_sType(String m_sType) {
-		this.m_sType = m_sType;
+	public void setsContent(String sContent) {
+		this.sContent = sContent;
 	}
 
-	public int getM_nStatus() {
-		return m_nStatus;
+	public String getsCode() {
+		return sCode;
 	}
 
-	public void setM_nStatus(int m_nStatus) {
-		this.m_nStatus = m_nStatus;
+	public void setsCode(String sCode) {
+		this.sCode = sCode;
+	}
+
+	public int getnStatus() {
+		return nStatus;
+	}
+
+	public void setnStatus(int nStatus) {
+		this.nStatus = nStatus;
 	}
 	
 }

@@ -1,52 +1,52 @@
 package mysql;
 
 public class Mysql {
-	private String m_sUserName;
-	private String m_sPassword;
-	private String m_sDriverClassName;
-	private String m_sUrl;
+	private String sUserName;
+	private String sPassword;
+	private String sDriverClassName;
+	private String sUrl;
 
-	public Mysql(String m_sUserName,String m_sPassword,String m_sDriverClassName,String m_sUrl){
-		this.m_sUserName = m_sUserName;
-		this.m_sPassword = m_sPassword;
-		this.m_sDriverClassName = m_sDriverClassName;
-		this.m_sUrl = m_sUrl;
+	public Mysql(String sUserName,String sPassword,String sDriverClassName,String sUrl){
+		this.sUserName = sUserName;
+		this.sPassword = sPassword;
+		this.sDriverClassName = sDriverClassName;
+		this.sUrl = sUrl;
 	}
 	
 	public Mysql(){
 		
 	}
 	
-	public String getM_sUserName() {
-		return m_sUserName;
+	public String getsUserName() {
+		return sUserName;
 	}
 
-	public void setM_sUserName(String m_sUserName) {
-		this.m_sUserName = m_sUserName;
+	public void setsUserName(String sUserName) {
+		this.sUserName = sUserName;
 	}
 
-	public String getM_sPassword() {
-		return m_sPassword;
+	public String getsPassword() {
+		return sPassword;
 	}
 
-	public void setM_sPassword(String m_sPassword) {
-		this.m_sPassword = m_sPassword;
+	public void setsPassword(String sPassword) {
+		this.sPassword = sPassword;
 	}
 
-	public String getM_sDriverClassName() {
-		return m_sDriverClassName;
+	public String getsDriverClassName() {
+		return sDriverClassName;
 	}
 
-	public void setM_sDriverClassName(String m_sDriverClassName) {
-		this.m_sDriverClassName = m_sDriverClassName;
+	public void setsDriverClassName(String sDriverClassName) {
+		this.sDriverClassName = sDriverClassName;
 	}
 
-	public String getM_sUrl() {
-		return m_sUrl;
+	public String getsUrl() {
+		return sUrl;
 	}
 
-	public void setM_sUrl(String m_sUrl) {
-		this.m_sUrl = m_sUrl;
+	public void setsUrl(String sUrl) {
+		this.sUrl = sUrl;
 	}
 
 }

@@ -11,4 +11,7 @@ public class OriginalDao extends Dao<Original>{
 	public List<Original> selectList(Original objOriginal){
 		return super.selectList("Original.selectList",objOriginal);
 	}
+	public void update(Original objOriginal){
+		super.update("Original.update", objOriginal);
+	}
 }

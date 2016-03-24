@@ -3,9 +3,11 @@ create database first;
 DROP TABLE IF EXISTS Original;
 CREATE TABLE Original
 (
-   map_key  text not null,
-   map_value text,
-   key_old text,
-   value_type varchar(10),
-   status int
+   id varchar(32) not null,
+   url  text not null,
+   content text,
+   urlOld text,
+   code varchar(10),
+   status int,
+   primary key(id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;

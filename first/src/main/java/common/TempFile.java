@@ -6,20 +6,20 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TempFile {
-	private Path m_path;
+	private Path path;
 	
 	public TempFile(String sFilePath,String sFileName){
-		m_path = Paths.get(sFilePath,sFileName);
+		path = Paths.get(sFilePath,sFileName);
 	}
 	public void write(InputStream is) throws Exception{
-		Files.deleteIfExists(m_path);
-		Files.copy(is,m_path);
+		Files.deleteIfExists(path);
+		Files.copy(is,path);
 	}
 	public void delete() throws Exception{
-		Files.deleteIfExists(m_path);
+		Files.deleteIfExists(path);
 	}
-	public Path getM_path() {
-		return m_path;
+	public Path getpath() {
+		return path;
 	}
 	
 }
