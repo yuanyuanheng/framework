@@ -2,12 +2,39 @@ package entity;
 
 public class Original {
 	private String sId;
-	private String sUrl;
-	private String sContent;
+	private String sLink;
+	private String sState;
 	private String sCode;
 	private int nStatus;
-	private String sUrlOld;
-	
+	private String sLastId;
+	private int nLevel;
+	private int nLinkCount;
+	private int nValid;
+
+	public int getnLevel() {
+		return nLevel;
+	}
+
+	public void setnLevel(int nLevel) {
+		this.nLevel = nLevel;
+	}
+
+	public int getnLinkCount() {
+		return nLinkCount;
+	}
+
+	public void setnLinkCount(int nLinkCount) {
+		this.nLinkCount = nLinkCount;
+	}
+
+	public int getnValid() {
+		return nValid;
+	}
+
+	public void setnValid(int nValid) {
+		this.nValid = nValid;
+	}
+
 	public String getsId() {
 		return sId;
 	}
@@ -16,28 +43,28 @@ public class Original {
 		this.sId = sId;
 	}
 
-	public String getsUrlOld() {
-		return sUrlOld;
+	public String getsLastId() {
+		return sLastId;
 	}
 
-	public void setsUrlOld(String sUrlOld) {
-		this.sUrlOld = sUrlOld;
+	public void setsLastId(String sLastId) {
+		this.sLastId = sLastId;
 	}
 
-	public String getsUrl() {
-		return sUrl;
+	public String getsLink() {
+		return sLink;
 	}
 
-	public void setsUrl(String sUrl) {
-		this.sUrl = sUrl;
+	public void setsLink(String sLink) {
+		this.sLink = sLink;
 	}
 
-	public String getsContent() {
-		return sContent;
+	public String getsState() {
+		return sState;
 	}
 
-	public void setsContent(String sContent) {
-		this.sContent = sContent;
+	public void setsState(String sState) {
+		this.sState = sState;
 	}
 
 	public String getsCode() {
@@ -55,5 +82,5 @@ public class Original {
 	public void setnStatus(int nStatus) {
 		this.nStatus = nStatus;
 	}
-	
+
 }

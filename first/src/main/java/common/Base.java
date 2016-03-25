@@ -1,5 +1,6 @@
 package common;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public abstract class Base {
 	public static Mysql mysql = initMysql();
 	public static SqlSessionFactory sqlSessionFactory = initSqlSessionFactory();
 	public static String userDir = System.getProperty("user.dir");
+	public static String tempDir = String.format("%s%s%s", userDir, File.separator, "temp");
 	public static Log log(Class<?> cls){
 		return LogFactory.getLog(cls);
 	} 

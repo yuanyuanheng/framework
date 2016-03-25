@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Original">
 	<insert id="insert" parameterType="Original">
-		insert into Original(id,url, content, code, status, urlOld)
-			values(#{sId},#{sUrl},#{sContent},#{sCode},#{nStatus},#{sUrlOld}) 
+		insert into Original(id, link, state, code, status, lastId, level, linkCount, valid)
+			values(#{sId},#{sLink},#{sState},#{sCode},#{nStatus},#{sLastId},#{nLevel},#{nLinkCount},#{nValid}) 
 	</insert>
 	
 	<update id="update" parameterType="Original">
         update Original set id=#{sId}
-        <if test=" sUrl != null and sUrl != '' ">
-            , url=#{sUrl}
+        <if test=" sLink != null and sLink != '' ">
+            , link=#{sLink}
         </if>
-        <if test=" sContent != null and sContent != '' ">
-            , content=#{sContent}
+        <if test=" sState != null and sState != '' ">
+            , state=#{sState}
         </if>
         <if test=" sCode != null and sCode != '' ">
             , code=#{sCode}
@@ -20,10 +20,19 @@
         <if test=" nStatus != null and nStatus != '' ">
             , status=#{nStatus}
         </if>
-        <if test=" sUrlOld != null and sUrlOld != '' ">
-            , url_old=#{sUrlOld}
+        <if test=" sLastId != null and sLastId != '' ">
+            , lastId=#{sLastId}
         </if>
-        
+        <if test=" nLevel != null and nLevel != '' ">
+            , level=#{nLevel}
+        </if>
+        <if test=" nLinkCount != null and nLinkCount != '' ">
+            , linkCount=#{nLinkCount}
+        </if>
+        <if test=" nValid != null and nValid != '' ">
+            , valid=#{nValid}
+        </if>
+        where id=#{sId}
 	</update>
 	
 	<select id="selectList" parameterType="Original" resultMap="OriginalMap">
@@ -31,11 +40,11 @@
 		<if test=" sId != null and sId != '' ">
             and id=#{sId}
         </if>
-		<if test=" sUrl != null and sUrl != '' ">
-            and url=#{sUrl}
+		<if test=" sLink != null and sLink != '' ">
+            and link=#{sLink}
         </if>
-        <if test=" sContent != null and sContent != '' ">
-            and content=#{sContent}
+        <if test=" sState != null and sState != '' ">
+            and state=#{sState}
         </if>
         <if test=" sCode != null and sCode != '' ">
             and code=#{sCode}
@@ -43,17 +52,29 @@
         <if test=" nStatus != null and nStatus != '' ">
             and status=#{nStatus}
         </if>
-        <if test=" sUrlOld != null and sUrlOld != '' ">
-            and urlOld=#{sUrlOld}
+        <if test=" sLastId != null and sLastId != '' ">
+            and lastId=#{sLastId}
+        </if>
+        <if test=" nLevel != null and nLevel != '' ">
+            and level=#{nLevel}
+        </if>
+        <if test=" nLinkCount != null and nLinkCount != '' ">
+            and linkCount=#{nLinkCount}
+        </if>
+        <if test=" nValid != null and nValid != '' ">
+            and valid=#{nValid}
         </if>
 	</select>
 	
 	<resultMap id="OriginalMap" type="Original">
 		<id property="sId" column="id"/>
-		<result property="sUrl" column="url"/>
-		<result property="sContent" column="content"/>
+		<result property="sLink" column="link"/>
+		<result property="sState" column="state"/>
 		<result property="sCode" column="code"/>
 		<result property="nStatus" column="status"/>
-		<result property="sUrlOld" column="urlOld"/>
+		<result property="sLastId" column="lastId"/>
+		<result property="nLevel" column="level"/>
+		<result property="nLinkCount" column="linkCount"/>
+		<result property="nValid" column="valid"/>
 	</resultMap>
 </mapper>
