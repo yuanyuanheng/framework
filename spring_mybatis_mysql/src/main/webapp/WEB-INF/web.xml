@@ -5,6 +5,8 @@
 <web-app>
 
 	<display-name>Archetype Created Web Application</display-name>
+	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value> 
+		classpath:spring-mvc.xml classpath:spring-cxf.xml </param-value> </context-param> -->
 
 	<servlet>
 		<servlet-name>springMVC</servlet-name>
@@ -12,7 +14,8 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				classpath:ApplicationContext-mvc.xml
+				classpath:spring-mvc.xml
+				<!-- classpath:spring-cxf.xml -->
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
@@ -20,6 +23,7 @@
 	<servlet>
 		<servlet-name>cxfservlet</servlet-name>
 		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
@@ -32,4 +36,7 @@
 		<url-pattern>/external/*</url-pattern>
 	</servlet-mapping>
 
+	<welcome-file-list>
+		<welcome-file>/index</welcome-file>
+	</welcome-file-list>
 </web-app>

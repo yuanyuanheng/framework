@@ -1,8 +1,8 @@
 package com.module.external;
 
-import javax.jws.WebService;
+import org.springframework.stereotype.Component;
 
-@WebService(endpointInterface = "com.module.external.Test")
+@Component("TestImpl")
 public class TestImpl implements Test {
 
 	public String get() {
