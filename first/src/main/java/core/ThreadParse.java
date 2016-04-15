@@ -21,7 +21,7 @@ public class ThreadParse extends Thread {
 			 objOriginal = listOriginal.get(i);
 			 objOriginalProc.parse(objOriginal);
 		 }
-		
+	
 	}
 
 }
