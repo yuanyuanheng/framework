@@ -26,4 +26,11 @@ public class UtilTest extends TestCase{
 		String value = PropertiesUtil.getValue("logDir", "system.properties");
 		System.out.println(value);
 	}
+	
+	public void  testlogUtil(){
+		LogUtil.write("这是测试日志", this.getClass());
+		LogUtil.setLogName("test");
+		LogUtil.write("这是测试日志test1", this.getClass());
+		LogUtil.write("这是测试日志test2", this.getClass());
+	}
 }
