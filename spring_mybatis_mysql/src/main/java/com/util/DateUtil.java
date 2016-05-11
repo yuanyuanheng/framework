@@ -24,5 +24,9 @@ public class DateUtil {
 	public static String getTime() {
 		return Time.format(new Date());
 	}
+	
+	public static String getTime(Date dt) {
+		return Time.format(dt);
+	}
 
 }

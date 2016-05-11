@@ -1,5 +1,6 @@
 package com.util;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,5 +33,10 @@ public class UtilTest extends TestCase{
 		LogUtil.setLogName("test");
 		LogUtil.write("这是测试日志test1", this.getClass());
 		LogUtil.write("这是测试日志test2", this.getClass());
+	}
+	
+	public void  testDt(){
+		Date dt = new Date(1462921583);
+		System.out.println(DateUtil.getTime(dt));
 	}
 }

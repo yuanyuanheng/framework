@@ -11,6 +11,7 @@ public class RMIServer {
 			HelloWorld helloWorld = new HelloWorldImpl();
 			LocateRegistry.createRegistry(6600);
 			Naming.bind("rmi://127.0.0.1:6600/HelloWorld", helloWorld);
+			Naming.bind("rmi://127.0.0.1:6600/Hello", helloWorld);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
